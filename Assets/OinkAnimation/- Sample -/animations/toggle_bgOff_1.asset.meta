@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 7da84ed7d8d5b48a7a09cc8d9345e307
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 11400000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 293489
+  packageName: "2D GUI Animation Framework/\u52A8\u753B\u6846\u67B6"
+  packageVersion: 1.0
+  assetPath: Assets/OinkAnimation/- Sample -/animations/toggle_bgOff_1.asset
+  uploadId: 689113

@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 5d5fa6c868be841e18b910ba2c0b07a5
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 11400000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 293489
+  packageName: "2D GUI Animation Framework/\u52A8\u753B\u6846\u67B6"
+  packageVersion: 1.0
+  assetPath: Assets/OinkAnimation/Animations/Popup/PopUp_Open3.asset
+  uploadId: 689113

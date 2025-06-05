@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 38de114a528a04a618b0baa1b2d8f9b0
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 11400000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 293489
+  packageName: "2D GUI Animation Framework/\u52A8\u753B\u6846\u67B6"
+  packageVersion: 1.0
+  assetPath: Assets/OinkAnimation/- Sample -/animations/loading_bar_1.asset
+  uploadId: 689113

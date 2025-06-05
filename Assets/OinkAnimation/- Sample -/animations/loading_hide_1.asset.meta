@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 486d5fffdb34c43f8a07e7a62850b280
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 11400000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 293489
+  packageName: "2D GUI Animation Framework/\u52A8\u753B\u6846\u67B6"
+  packageVersion: 1.0
+  assetPath: Assets/OinkAnimation/- Sample -/animations/loading_hide_1.asset
+  uploadId: 689113

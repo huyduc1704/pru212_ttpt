@@ -1,0 +1,18 @@
+fileFormatVersion: 2
+guid: 1e376166afd214cb48a0a326de7123fc
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences: []
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 293489
+  packageName: "2D GUI Animation Framework/\u52A8\u753B\u6846\u67B6"
+  packageVersion: 1.0
+  assetPath: Assets/OinkAnimation/- Sample -/ToggleSample.cs
+  uploadId: 689113
