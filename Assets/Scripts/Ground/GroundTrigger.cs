@@ -85,4 +85,8 @@ public class GroundTrigger : MonoBehaviour
             Gizmos.DrawWireCube(transform.position, col.bounds.size);
         }
     }
+    public void ResetTrigger()
+    {
+        hasTriggered = false;
+    }
 }

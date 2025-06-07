@@ -1,64 +1,57 @@
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
 public class Player : MonoBehaviour
 {
+    [Header("Movement Settings")]
     public float moveSpeed = 5f;
     public float jumpForce = 7f;
-    private Rigidbody2D rb;
-    private bool isGrounded;
-    private bool hasJumped; // Prevent double jumps
+    private float direction = 0f;
 
     [Header("Ground Check")]
     public LayerMask groundLayerMask;
     public Transform groundCheck;
-    public float groundCheckRadius = 0.02f; // Reduced radius
+    public float groundCheckRadius = 0.02f;
+
+    private Rigidbody2D rb;
+    private bool isGrounded;
+    private bool hasJumped;
 
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
-        
-        if (groundCheck == null)
-        {
-            GameObject groundCheckObj = new GameObject("GroundCheck");
-            groundCheckObj.transform.SetParent(transform);
-            groundCheckObj.transform.localPosition = new Vector3(0, -0.3f, 0); // Adjusted position
-            groundCheck = groundCheckObj.transform;
-        }
     }
     
     void Update()
     {
         isGrounded = Physics2D.OverlapCircle(groundCheck.position, groundCheckRadius, groundLayerMask);
+        direction = Input.GetAxis("Horizontal");
 
-        if (isGrounded)
+        if (direction > 0f)
         {
-            hasJumped = false;
+            rb.linearVelocity = new Vector2(direction * moveSpeed, rb.linearVelocity.y);
         }
-        
+        else if (direction < 0f)
+        {
+            rb.linearVelocity = new Vector2(direction * moveSpeed, rb.linearVelocity.y);
+        }
+        else
+        {
+            rb.linearVelocity = new Vector2(0, rb.linearVelocity.y);
+        }
+
+        if (Input.GetButtonDown("Jump") && isGrounded)
+        {
+            rb.linearVelocity = new Vector2(rb.linearVelocity.x, jumpForce);
+        }
         float moveX = Input.GetAxis("Horizontal");
-        rb.linearVelocity = new Vector2(moveX * moveSpeed, rb.linearVelocity.y);
+        if (moveX == 0) return;
 
-        if (Input.GetKeyDown(KeyCode.Space) && isGrounded && !hasJumped)
-        {
-            rb.AddForce(new Vector2(0, jumpForce), ForceMode2D.Impulse);
-            hasJumped = true;
-        }
-        
         float scaleX = Mathf.Abs(transform.localScale.x);
-        if (moveX > 0)
-            transform.localScale = new Vector3(scaleX, transform.localScale.y, transform.localScale.z);
-        else if (moveX < 0)
-            transform.localScale = new Vector3(-scaleX, transform.localScale.y, transform.localScale.z);
-    }
-    
-    void OnTriggerEnter2D(Collider2D other)
-    {
-        if (other.CompareTag("Trap") || other.CompareTag("DeathZone"))
-        {
-            Debug.Log("Trap or DeathZone triggered!");
-            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
-        }
+        transform.localScale = new Vector3(
+            moveX > 0 ? scaleX : -scaleX,
+            transform.localScale.y,
+            transform.localScale.z
+        );
     }
     
     void OnDrawGizmosSelected()

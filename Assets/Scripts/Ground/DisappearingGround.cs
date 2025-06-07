@@ -110,5 +110,22 @@ public class DisappearingGround : MonoBehaviour
         // Đảm bảo hoàn toàn trong suốt
         fadeMaterial.color = new Color(1f, 1f, 1f, 0f);
     }
+    public void ResetGround()
+    {
+        isDisappearing = false;
+        if (tilemapCollider != null)
+            tilemapCollider.enabled = true;
+        if (tilemapRenderer != null && originalMaterial != null)
+            tilemapRenderer.material = originalMaterial;
+        if (fadeMaterial != null)
+            fadeMaterial.color = Color.white;
+
+        // Reset all triggers that target this ground
+        foreach (var trigger in FindObjectsOfType<GroundTrigger>())
+        {
+            if (trigger.targetGround == this)
+                trigger.ResetTrigger();
+        }
+    }
     
 }
