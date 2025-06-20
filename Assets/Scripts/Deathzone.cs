@@ -1,4 +1,5 @@
-using UnityEngine;
+﻿using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class DeathZone : MonoBehaviour
 {
@@ -39,28 +40,13 @@ public class DeathZone : MonoBehaviour
 
     private void HandlePlayerRespawn(Collider2D player)
     {
-        // Reset position
-        player.transform.position = respawnPoint;
-
-        // Reset velocity
-        Rigidbody2D playerRb = player.GetComponent<Rigidbody2D>();
-        if (playerRb != null)
+        if (PointManager.Instance == null)
         {
-            playerRb.linearVelocity = Vector2.zero;
+            Debug.LogError("⚠ PointManager.Instance is null! Không tìm thấy PointManager.");
+            return;
         }
 
-        // Spawn effect if available
-        if (respawnEffect != null)
-        {
-            Instantiate(respawnEffect, respawnPoint, Quaternion.identity);
-        }
-
-        foreach (var ground in FindObjectsOfType<DisappearingGround>())
-        {
-            ground.ResetGround();
-        }
-        TrapTrigger.ResetAllTraps();
-
-        Debug.Log($"Player respawned at {respawnPoint}");
+   
+        SceneManager.LoadScene("GameOverScene");
     }
 }
