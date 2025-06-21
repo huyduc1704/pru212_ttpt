@@ -40,7 +40,8 @@ public class ResultUI : MonoBehaviour
 
         retryButton.onClick.AddListener(() => {
             PointManager.Instance.ResetScore();
-            SceneManager.LoadScene("Scene1");
+            PlayerPrefs.SetString("LastPlayedScene", SceneManager.GetActiveScene().name);
+            SceneManager.LoadScene("GameOverScene");
         });
 
         // Nếu có nút Menu (trong WinScene)
