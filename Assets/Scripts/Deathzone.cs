@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class DeathZone : MonoBehaviour
 {
@@ -62,5 +63,9 @@ public class DeathZone : MonoBehaviour
         TrapTrigger.ResetAllTraps();
 
         Debug.Log($"Player respawned at {respawnPoint}");
+
+        // Load GameOver scene
+        PlayerPrefs.SetString("LastPlayedScene", SceneManager.GetActiveScene().name);
+        SceneManager.LoadScene("GameOverScene");
     }
 }

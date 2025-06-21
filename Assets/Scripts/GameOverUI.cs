@@ -29,7 +29,8 @@ public class GameOverUI : MonoBehaviour
 
         // Thêm Listener cho nút Retry để tải lại Scene1 khi click
         retryButton.onClick.AddListener(() => {
-            SceneManager.LoadScene("Scene1");
+            string lastScene = PlayerPrefs.GetString("LastPlayedScene", "Scene1"); // Replace "Scene1" with your default gameplay scene
+            SceneManager.LoadScene(lastScene);
         });
     }
 }
