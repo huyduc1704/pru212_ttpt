@@ -40,20 +40,10 @@ public class DeathZone : MonoBehaviour
 
     private void HandlePlayerRespawn(Collider2D player)
     {
-        // Reset position
-        player.transform.position = respawnPoint;
-
-        // Reset velocity
-        Rigidbody2D playerRb = player.GetComponent<Rigidbody2D>();
-        if (playerRb != null)
+        if (PointManager.Instance == null)
         {
-            playerRb.linearVelocity = Vector2.zero;
-        }
-
-        // Spawn effect if available
-        if (respawnEffect != null)
-        {
-            Instantiate(respawnEffect, respawnPoint, Quaternion.identity);
+            Debug.LogError("⚠ PointManager.Instance is null! Không tìm thấy PointManager.");
+            return;
         }
 
         foreach (var ground in FindObjectsOfType<DisappearingGround>())

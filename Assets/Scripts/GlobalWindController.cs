@@ -25,11 +25,11 @@ public class GlobalWindController : MonoBehaviour
             // Chờ đến khi cần cảnh báo
             yield return new WaitForSeconds(windInterval - warningTime);
 
-            // Cảnh báo
-            warningUI.SetActive(true);
-            Debug.Log("⚠️ Gió sắp thổi!");
+            // Bắt đầu nhấp nháy cảnh báo
+            Debug.Log("⚠ Gió sắp thổi!");
+            StartCoroutine(BlinkWarningUI(warningTime, 0.3f)); // nhấp nháy trong warningTime mỗi 0.3s
+
             yield return new WaitForSeconds(warningTime);
-            warningUI.SetActive(false);
 
             // Gió bắt đầu
             windActive = true;
@@ -40,9 +40,23 @@ public class GlobalWindController : MonoBehaviour
 
             // Gió dừng
             windActive = false;
+
+            yield return new WaitForSeconds(1f);
             snowEffect.SetActive(false);
             Debug.Log("✅ Gió đã ngừng.");
         }
+    }
+
+    IEnumerator BlinkWarningUI(float duration, float blinkInterval)
+    {
+        float elapsed = 0f;
+        while (elapsed < duration)
+        {
+            warningUI.SetActive(!warningUI.activeSelf);
+            yield return new WaitForSeconds(blinkInterval);
+            elapsed += blinkInterval;
+        }
+        warningUI.SetActive(false); // Tắt UI sau khi nhấp nháy xong
     }
 
     private void OnTriggerStay2D(Collider2D other)
